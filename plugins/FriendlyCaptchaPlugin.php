@@ -180,9 +180,18 @@ class FriendlyCaptchaPlugin extends phplistPlugin
         $theme = empty($pageData['friendlycaptcha_dark_mode']) ? '' : 'dark';
 
         $format = <<<'END'
-<div class="frc-captcha %s" data-sitekey="%s" data-lang="%s"></div>
+<div class="frc-captcha %s" data-sitekey="%s" data-lang="%s" data-callback="friendlyCaptchaCallback"></div>
 <script type="module" src="https://unpkg.com/friendly-challenge@0.9.9/widget.module.min.js" async defer></script>
 <script nomodule src="https://unpkg.com/friendly-challenge@0.9.9/widget.min.js" async defer></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementsByName("subscribe")[0].disabled = "disabled";
+    }, false);
+
+    function friendlyCaptchaCallback(solution) {
+        document.getElementsByName("subscribe")[0].disabled = null;
+    }
+</script>
 END;
         return sprintf(
             $format,
