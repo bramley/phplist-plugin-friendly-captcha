@@ -18,7 +18,7 @@ You must also create a site on friendlycaptcha.com, then enter the site key and 
 ### Install through phplist ###
 
 Install on the Manage Plugins page (menu Config > Plugins) using the package URL
-`https://github.com/marcphilipp/phplist-plugin-friendly-captcha/archive/main.zip`
+`https://github.com/bramley/phplist-plugin-friendly-captcha/archive/main.zip`
 
 ### Usage ###
 
