@@ -5,7 +5,9 @@
  * This file is a part of FriendlyCaptchaPlugin.
  *
  * @author    Marc Philipp
+ * @author    Duncan Cameron
  * @copyright 2022 Marc Philipp
+ * @copyright 2022 Duncan Cameron
  * @license   http://www.gnu.org/licenses/gpl.html GNU General Public License, Version 3
  *
  * @see       https://docs.friendlycaptcha.com/
@@ -36,7 +38,7 @@ class FriendlyCaptchaPlugin extends phplistPlugin
     public $name = 'Friendly Captcha Plugin';
     public $description = 'Adds an Friendly Captcha field to subscribe forms';
     public $documentationUrl = 'https://resources.phplist.com/plugin/friendly-captcha';
-    public $authors = 'Marc Philipp';
+    public $authors = 'Marc Philipp, Duncan Cameron';
     public $coderoot;
 
     /**
@@ -193,12 +195,8 @@ class FriendlyCaptchaPlugin extends phplistPlugin
     }
 </script>
 END;
-        return sprintf(
-            $format,
-            $theme,
-            $this->siteKey,
-            $languageCode
-        );
+
+        return sprintf($format, $theme, $this->siteKey, $languageCode);
     }
 
     /**
@@ -225,6 +223,7 @@ END;
 
         if (empty($_POST['frc-captcha-solution'])) {
             $translator = new FrontendTranslator($pageData, $this->coderoot);
+
             return $translator->s('Please complete the Friendly Captcha');
         }
 
@@ -263,7 +262,7 @@ END;
             . CHtml::label(s('Do not validate Friendly Captcha for asubscribe'), 'friendlycaptcha_not_asubscribe')
             . CHtml::checkBox('friendlycaptcha_not_asubscribe', $notAsubscribe, array('value' => 1, 'uncheckValue' => 0))
             . CHtml::label(s('Enable dark mode'), 'friendlycaptcha_dark_mode')
-            . CHtml::checkBox(s('friendlycaptcha_dark_mode'), $darkMode, array('value' => 1, 'uncheckValue' => 0));
+            . CHtml::checkBox('friendlycaptcha_dark_mode', $darkMode, array('value' => 1, 'uncheckValue' => 0));
 
         return $html;
     }

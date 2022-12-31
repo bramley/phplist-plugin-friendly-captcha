@@ -1,2 +1,6 @@
+version 1.0.1+20221231
+      Minor changes following change of ownership of the repository.
+      Fixes #1
+
 version 1.0.0+20221223
       First release based on the hCaptcha plugin
